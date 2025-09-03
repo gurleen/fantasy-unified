@@ -4,8 +4,29 @@ Unified Pydantic data models and fetcher interface for fantasy football platform
 
 ## Install
 
+Using uv (recommended):
+
 ```bash
-pip install -e .
+uv sync
+```
+
+For an editable install during development:
+
+```bash
+uv pip install -e .
+```
+
+Build distributables (wheel and sdist):
+
+```bash
+uv build
+```
+
+Publish to an index (optional):
+
+```bash
+# Set credentials, then:
+uv publish
 ```
 
 ## Goals
