@@ -52,44 +52,16 @@ from fantasy_unified.fetchers import BaseFetcher
 from fantasy_unified.types import Platform
 from fantasy_unified.models import League
 
-class SleeperFetcher(BaseFetcher):
-    @property
-    def platform(self) -> Platform:
-        return Platform.SLEEPER
+from fantasy_unified.fetchers import SleeperFetcher
 
-    def list_user_leagues(self, user_external_id: str, season_year: int):
-        # call sleeper SDK, map to League models
-        return []
-
-    def get_league(self, league_external_id: str):
-        return League(name="", season_year=2025)
-
-    def get_franchises(self, league_external_id: str):
-        return []
-
-    def get_rosters(self, league_external_id: str):
-        return []
-
-    def get_players(self, season_year: int, league_external_id: str | None = None):
-        return []
-
-    def get_matchups(self, league_external_id: str, week: int):
-        return []
-
-    def get_week_stats(self, league_external_id: str, week: int):
-        return []
-
-    def get_week_projections(self, league_external_id: str, week: int):
-        return []
-
-    def get_transactions(self, league_external_id: str, week: int | None = None):
-        return []
-
-    def get_draft(self, league_external_id: str):
-        return None
-
-    def get_draft_picks(self, league_external_id: str):
-        return []
+fetcher = SleeperFetcher()
+leagues = fetcher.list_user_leagues(user_external_id="12345", season_year=2025)
+league = fetcher.get_league(league_external_id="9876543210")
+franchises = fetcher.get_franchises(league_external_id="9876543210")
+rosters = fetcher.get_rosters(league_external_id="9876543210")
+players = fetcher.get_players(season_year=2025)
+matchups_w1 = fetcher.get_matchups(league_external_id="9876543210", week=1)
+transactions = fetcher.get_transactions(league_external_id="9876543210")
 ```
 
 ## Notes
